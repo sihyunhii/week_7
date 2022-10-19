@@ -25,27 +25,27 @@ const qnaList = [
   {
     q: '4. When your friend is sad, your first reaction?',
     a: [
-      { answer: 'a. I feel sorry and get sad myself" ', type: [0, 1, 2, 3, 12, 13, 14, 15] },
-      { answer: "b. I try to find a solution to their probalem", type: [4, 5, 6, 7, 8, 9, 10, 11] }
+      { answer: 'a. I feel sorry and get sad myself', type: [0, 1, 2, 3, 12, 13, 14, 15] },
+      { answer: "b. I try to find a solution to their problem", type: [4, 5, 6, 7, 8, 9, 10, 11] }
     ]
   },
   {
     q: '5. Have you ever thought about space travel?',
     a: [
-      { answer: 'a. It would be great one day!', type: [0, 1, 2, 3, 4, 5, 6, 7] },
-      { answer: 'b. No i need to deal with my midterms first', type: [8, 9, 10, 11, 12, 13, 14, 15]},
+      { answer: 'a. Yes! It would be great one day!', type: [0, 1, 2, 3, 4, 5, 6, 7] },
+      { answer: 'b. No, i need to deal with my midterms first', type: [8, 9, 10, 11, 12, 13, 14, 15]},
     ]
   },
 
   {
     q: '6. When you meet new people, you most likely to?',
     a: [
-      { answer: 'a. I say hi and start sonversation first', type: [1, 3, 5, 7, 9, 11, 13, 15] },
-      { answer: 'b. I just wait till they talk first', type: [0, 2, 4, 6, 8, 10, 12, 14] }
+      { answer: 'a. Say hi and start sonversation first', type: [1, 3, 5, 7, 9, 11, 13, 15] },
+      { answer: 'b. Just wait till they talk first', type: [0, 2, 4, 6, 8, 10, 12, 14] }
     ]
   },
   {
-    q: '7. What do you base your decisions on',
+    q: '7. What do you base your decisions on?',
     a: [
       { answer: 'a. My own experience', type: [8, 9, 10, 11, 12, 13, 14, 15] },
       { answer: 'b. I am open to new sultions and ideas', type: [0, 1, 2, 3, 4, 5, 6, 7] },
