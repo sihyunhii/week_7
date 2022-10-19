@@ -1,52 +1,385 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <link rel="stylesheet" href="default.css">
-        <link rel="stylesheet" href="main.css">
-        <link rel="stylesheet" href="qna.css">
-        <link rel="stylesheet" href="animation.css">
-        <link rel="stylesheet" href="result.css">
+        <title>CHARACTER MBTI</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@300;400&display=swap" rel="stylesheet">
+
+        <style>
+            body {
+                padding: 0;
+                margin: 0;	
+                width: 100vw;
+                height: 100vh;
+                background-color: #fffce2;
+            }
+
+            .container {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            * {
+                font-family: 'Gluten', cursive;
+            }
+
+            #main {
+                background-color: #fffce2;
+                width: 80%;
+                text-align: center;
+                font-size: 30px;
+            }
+
+            p {
+                font-size: 22px;
+            }
+
+            #start{
+                width:100px;
+                height: 40px;
+                padding: 5px;
+                font-size: 20px;
+                background-color: black;
+                color: white;
+                border: 0px;
+            }
+
+            #qna {
+                height: 100vh;
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+            }
+
+            .qBox {
+                background-color: black;
+                color: white;
+                text-align: center;
+                font-size: 24px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width: 100%;
+            }
+
+            .answerList {
+                background-color: white;
+                color: black;
+                display: block;
+                width: 100%;
+                border: 2px solid white;
+                font-size: 20px;
+                text-align: center;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                padding: 10px;
+                border: 2px solid black;
+            }
+
+            .answerList:hover, .answerList:focus {
+                background-color: hover;
+                border: 2px solid black;
+            }
+
+            .status {
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                height: 20px;
+                width: 100%;
+                background-color: white;
+                border: 2px solid black;
+                margin-top: 100px;   
+            }
+
+            .statusBar {
+                height: 100%;
+                background-color: black;
+            }
+
+            .img-fluid {
+                height: 600px;
+                width: auto;
+            }
+
+            #result{
+                display: none;
+                background-color: #fffce2;
+                width: 100%;
+                text-align: center;
+            }
+
+            .resultname {
+                font-size: 35px;
+                margin: 20px;
+            }
+
+            .resultDesc {
+                font-size: 30px;
+                margin: 20px;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+
+            @-webkit-keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            @-webkit-keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+
+            .fadeIn {
+                animation: fadeIn;
+                animation-duration: 0.5s;
+            }
+
+            .fadeOut {
+                animation: fadeOut;
+                animation-duration: 0.5s;
+            }
+        </style>
     </head>
     <body>
         <div class="container" >
-            <section id="main" class="mx-auto my-5 py-5 px-3">
-                <h1 >CHARACTER MBTI TEST</h3>
-                <div class="col-lg-6 col-md-5 col-sm-6 col-12 mx-auto">
+            
+            <section id="main">
+                <h1>CHARACTER MBTI TEST</h1>
+                <div>
                     <img src="main.png" alt="mainImage" class="img-fluid">
                 </div>
-                <p>MBTI WEBSITE BY ME. PRESS START!</p>
+                <br>
                 <button type="button" id="start" onclick="js:begin()">START</button>
             </section>
+
             <section id="qna">
-                <div class="status mx-auto mt-5">
-                    <div class="statusBar">
-                    </div>
+                <div class="status">
+                    <div class="statusBar"> </div>
                 </div>
-                <div class="qBox my-5 py-3 mx-auto">
-
-                </div>
-                <div class="answerBox">
-
-                </div>
+                <div class="qBox"> </div>
+                <div class="answerBox"> </div>
             </section>
-            <section id="result" class="mx-auto my-5 py-5 px-3"> 
-                <h1>YOUR RESULT</h1>
-                    <div class="resultname">
 
-                    </div>
-                    <div id="resultImg" class="col-lg-6 col-md-5 col-sm-6 col-12 mx-auto">
-                    
-                    </div>
-                    <div class="resultDesc">
-
-                    </div>
+            <section id="result"> 
+                <h1>YOUR RESULT:</h1>
+                <div class="resultname"> </div>
+                <div id="resultImg"> </div>
+                <div class="resultDesc"></div>    
             </section>
-            <script src="data.js" charset="utf-8"></script>
-            <script src="start.js" charset="utf-8"></script>
+
+            <script>
+
+                const qnaList = [
+                {
+                    q: '1. What style of work do you prefer?',
+                    a: [ { answer: 'I start working only when the deadline is close', type: [2, 3, 6, 7, 10, 11, 14, 15] },
+                    { answer: 'I need to concentarate on my work and start early', type: [0, 1, 4, 5, 8, 9, 12, 13] } ]
+                },
+                {
+                    q: '2. How often do you clean your room?',
+                    a: [ { answer: 'I clean it at least once a week', type: [0, 1, 4, 5, 8, 9, 12, 13] },
+                    { answer: 'Do I need to clean it?', type: [2, 3, 6, 7, 10, 11, 14, 15] } ]
+                },
+                {
+                    q: '3. What is your perfect weekend?',
+                    a: [ { answer: 'Meeting friends and new people', type: [1, 3, 5, 7, 9, 11, 13, 15] },
+                    { answer: 'Coding at home or watching a movie', type: [0, 2, 4, 6, 8, 10, 12, 14] }]
+                },
+                {
+                    q: '4. When your friend is sad, your first reaction?',
+                    a: [ { answer: 'I feel sorry and get sad myself" ', type: [0, 1, 2, 3, 12, 13, 14, 15] },
+                    { answer: "I try to find a solution to their probalem", type: [4, 5, 6, 7, 8, 9, 10, 11] } ]
+                },
+                {
+                    q: '5. Have you ever thought about space travel?',
+                    a: [ { answer: 'Yes, it would be great one day!', type: [0, 1, 2, 3, 4, 5, 6, 7] },
+                    { answer: 'No I need to deal with my midterms first', type: [8, 9, 10, 11, 12, 13, 14, 15]} ]
+                },
+
+                {
+                    q: '6. When you meet new people, you most likely to?',
+                    a: [ { answer: 'Say hi and start sonversation first', type: [1, 3, 5, 7, 9, 11, 13, 15] },
+                    { answer: 'Just wait till they talk first', type: [0, 2, 4, 6, 8, 10, 12, 14] } ]
+                },
+                {
+                    q: '7. What do you base your decisions on?',
+                    a: [ { answer: 'My own experience', type: [8, 9, 10, 11, 12, 13, 14, 15] },
+                    { answer: 'I am open to new solutions and ideas', type: [0, 1, 2, 3, 4, 5, 6, 7] } ]
+                },
+                {
+                    q: '8. Do you feel hard to relate to others?',
+                    a: [ { answer: 'Yes, sometimes i just cannot understand people.', type: [4, 5, 6, 7, 8, 9, 10, 11] },
+                    { answer: 'It is easy to imagine me being in their situation.', type: [0, 1, 2, 3, 12, 13, 14, 15] } ]
+                } 
+                ]
+                
+                /*
+
+                character with their mbti and numbers for array storage
+
+                Elsa, infj, 0;
+                Judy Hopps, enfj, 1;
+                Bubbles, infp, 2;
+                Sailor Moon, enfp, 3;
+
+                Haku, intj, 4;
+                Peppa Pig, entj, 5;
+                Alice, intp, 6;
+                Snowball, enpt, 7;
+
+                Squidward Tentacles, istj, 8;
+                Blossom, estj, 9;
+                Shrek, istp, 10;
+                Sonic the Hedgehog, estp, 11;
+
+                Cinderella, isfj, 12;
+                SpongeBob SquarePants, esfj, 13;
+                Kirby, isfp, 14;
+                Homer Simpson, esfp, 15;
+
+                */
+
+                const infoList = [
+                { name: 'Elsa (INFJ)', desc: 'Frozen (Franchise)'},
+                { name: 'Judy Hopps (ENFJ)', desc: 'Zootopia (2016)' },
+                { name: 'Bubbles (INFP)', desc: 'The Powerpuff Girls (1998)'},
+                { name: 'Sailor Moon (ENFP)', desc: 'Bishoujo Senshi Sailor Moon (Pretty Soldier Sailor Moon)'},
+                { name: 'Haku (INTJ)', desc: 'Sen to Chihiro no Kamikakushi (Spirited Away)'},
+                { name: 'Peppa Pig (ENTJ)', desc: 'Peppa Pig (2004)'},
+                { name: 'Alice (INTP)', desc: 'Alice in Wonderland (1951)'},
+                { name: 'Snowball (ENTP)', desc: 'The Secret Life of Pets (2016)'},
+                { name: 'Squidward Tentacles (ISTJ)', desc: 'SpongeBob SquarePants (1999)'},
+                { name: 'Blossom (ESTJ)', desc: 'The Powerpuff Girls (1998)'},
+                { name: 'Shrek (ISTP)', desc: 'Shrek (Franchise)'},
+                { name: 'Sonic the Hedgehog (ESTP)', desc: 'Super Smash Bros. Series'},
+                { name: 'Cinderella (ISFJ)', desc: 'Cinderella (1950)'},
+                { name: 'SpongeBob SquarePants (ESFJ)', desc: 'SpongeBob SquarePants (1999)'},
+                { name: 'Kirby (ISFP)', desc: 'Super Smash Bros. Series'},
+                { name: 'Homer Simpson (ESFP)', desc: 'The Simpsons (1989)'},
+                ]
+
+                const main = document.querySelector("#main");
+                const qna = document.querySelector("#qna");
+                const result = document.querySelector("#result");
+
+                const endPoint = 8;
+                const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+                function calResult(){
+                    console.log(select);
+                    var result = select.indexOf(Math.max(...select)); 
+                    return result;
+                }
+
+                function setResult(){
+                    let point = calResult();
+                    const resultName = document.querySelector('.resultname');
+                    resultName.innerHTML = infoList[point].name;
+
+                    var resultImg = document.createElement('img');
+                    const imgDiv = document.querySelector('#resultImg');
+                    var imgURL = 'image-' + point + '.png';
+                    resultImg.src = imgURL;
+                    resultImg.alt = point;
+                    resultImg.classList.add('img-fluid');
+
+                    imgDiv.appendChild(resultImg);
+
+                    const resultDesc = document.querySelector('.resultDesc');
+                    resultDesc.innerHTML = infoList[point].desc;
+                }
+
+                function goResult(){
+                    qna.style.WebkitAnimation = "fadeOut 1s";
+                    qna.style.animation = "fadeOut 1s";
+                    setTimeout(() => {
+                        result.style.WebkitAnimation = "fadeIn 1s";
+                        result.style.animation = "fadeIn 1s";
+                        setTimeout(() => {
+                            qna.style.display = "none";
+                            result.style.display =  "block"
+                        }, 450)})
+                        setResult();
+                }
+
+                function addAnswer(answerText, qIdx, idx){
+                    var a = document.querySelector('.answerBox');
+                    var answer = document.createElement('button');
+                    answer.classList.add('answerList');
+                    answer.classList.add('my-3');
+                    answer.classList.add('py-3');
+                    answer.classList.add('mx-auto');
+                    answer.classList.add('fadeIn');
+
+                    a.appendChild(answer);
+                    answer.innerHTML = answerText;
+                    answer.addEventListener("click", function(){
+                        var children = document.querySelectorAll('.answerList');
+                        for(let i = 0; i < children.length; i++){
+                            children[i].disabled = true;
+                            children[i].style.WebkitAnimation = "fadeOut 0.5s";
+                            children[i].style.animation = "fadeOut 0.5s";
+                        }
+                        setTimeout(() => {
+                            var target = qnaList[qIdx].a[idx].type;
+                            for(let i = 0; i < target.length; i++) {
+                                select[target[i]] += 1;
+                            }
+                            for(let i = 0; i < children.length; i++) {
+                                children[i].style.display = 'none';
+                            }
+                            goNext(++qIdx);
+                        }, 450)
+                    },false );
+                }
+
+                function goNext(qIdx) {
+                    if(qIdx === endPoint){
+                        goResult();
+                        return;
+                    }
+                    var q = document.querySelector('.qBox');
+                    q.innerHTML = qnaList[qIdx].q;
+                    for(let i in qnaList[qIdx].a){
+                        addAnswer(qnaList[qIdx].a[i].answer, qIdx, i);
+                    }
+                    var status = document.querySelector('.statusBar');
+                    status.style.width = (100/endPoint) * (qIdx+1) + '%';
+                }
+
+                function begin(){
+                    main.style.WebkitAnimation = "fadeOut 1s";
+                    main.style.animation = "fadeOut 1s";
+                    setTimeout(() => {
+                        qna.style.WebkitAnimation = "fadeIn 1s";
+                        qna.style.animation = "fadeIn 1s";
+                        setTimeout(() => {
+                            main.style.display = "none";
+                            qna.style.display = "block"
+                        }, 450);
+                        let qIdx = 0;
+                        goNext(qIdx);
+                    }, 450);
+                }
+            </script>
         </div>
     </body>
 </html>
